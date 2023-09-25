@@ -1,70 +1,50 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+First the js files were not loaded when the ReactJS app started due to single page app. Therefore the recipies images were not loaded
 
-## Available Scripts
+Added this code to every components to force the loading of the js files when the component is called
+```
+  useEffect(() => {
+    let scripts = [
+        {src:"assets/vendor/purecounter/purecounter_vanilla.js"},
+        {src:"assets/vendor/aos/aos.js"},
+        {src:"assets/vendor/bootstrap/js/bootstrap.bundle.min.js"},
+        {src:"assets/vendor/glightbox/js/glightbox.min.js"},
+        {src:"assets/vendor/isotope-layout/isotope.pkgd.min.js"},
+        {src:"assets/vendor/swiper/swiper-bundle.min.js"},
+        {src:"assets/js/main.js"},
+    ]
+    //Append the script element on each iteration
+    scripts.map(item => { 
+        const script = document.createElement("script")
+        script.src = item.src
+        script.async = false
+        script.defer = false
+        document.body.appendChild(script)
+    }) 
+},[])
+```
+This line of code was commented out
+```
+ // let randomReceipes = [...Array(142)].map(_ => Math.random() * products.length | 0)
+  //console.log(randomReceipes);
+```
 
-In the project directory, you can run:
+The page would display an error first before the page would load as normal. In order for the page to not to show any error on the page, in the main.js this section was commented out
 
-### `npm start`
+```
+  // on('click', '.scrollto', function(e) {
+  //   if (select(this.hash)) {
+  //     e.preventDefault()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  //     let navbar = select('#navbar')
+  //     if (navbar.classList.contains('navbar-mobile')) {
+  //       navbar.classList.remove('navbar-mobile')
+  //       let navbarToggle = select('.mobile-nav-toggle')
+  //       navbarToggle.classList.toggle('bi-list')
+  //       navbarToggle.classList.toggle('bi-x')
+  //     }
+  //     scrollto(this.hash)
+  //   }
+  // }, true)
+```
