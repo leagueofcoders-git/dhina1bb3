@@ -48,3 +48,4 @@ The page would display an error first before the page would load as normal. In o
   //   }
   // }, true)
 ```
+Lastly, I moved the NavBar part as a header.js
